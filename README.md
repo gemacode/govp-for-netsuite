@@ -10,11 +10,14 @@ SuiteApp SDF abierta para automatizar GOVP desde NetSuite:
 - el token se referencia desde **API Secrets**, nunca se guarda en scripts ni
   registros del SuiteApp.
 
-## Estado 0.1.1
+## Estado 0.1.2
 
-Candidato técnico. El proyecto, los scripts y 12 pruebas autocontenidas están
-verificados. La validación SDF conectada, instalación y ciclo bidireccional
-siguen pendientes de un sandbox NetSuite. No es una release de producción.
+Candidato técnico reforzado. El proyecto, los scripts y 18 pruebas
+autocontenidas están verificados, incluido el ciclo simulado de User Event y
+Map/Reduce. La cola interna ya no exige que el usuario que confirma la
+transacción tenga rol Administrador y el deployment fija buffer y concurrencia
+a uno. La validación SDF conectada, instalación y ciclo bidireccional siguen
+pendientes de un sandbox NetSuite. No es una release de producción.
 
 ## Configuración del sandbox
 
@@ -35,5 +38,8 @@ suitecloud project:deploy
 
 Los dos últimos comandos requieren una cuenta/sandbox autenticado. El código no
 transmite nombres, email, direcciones ni teléfonos.
+
+La evidencia que se debe conservar para superar la puerta nativa está definida
+en [SANDBOX_ACCEPTANCE.md](SANDBOX_ACCEPTANCE.md).
 
 Código y releases: <https://github.com/gemacode/govp-for-netsuite>.
