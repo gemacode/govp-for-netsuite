@@ -2,7 +2,7 @@
   <publisherid>com.gemacode</publisherid>
   <projectid>govp</projectid>
   <projectname>GOVP for NetSuite</projectname>
-  <projectversion>0.1.0</projectversion>
+  <projectversion>0.1.1</projectversion>
   <frameworkversion>1.0</frameworkversion>
   <dependencies>
     <features>

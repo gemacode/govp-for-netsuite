@@ -10,7 +10,7 @@ SuiteApp SDF abierta para automatizar GOVP desde NetSuite:
 - el token se referencia desde **API Secrets**, nunca se guarda en scripts ni
   registros del SuiteApp.
 
-## Estado 0.1.0
+## Estado 0.1.1
 
 Candidato técnico. El proyecto, los scripts y 12 pruebas autocontenidas están
 verificados. La validación SDF conectada, instalación y ciclo bidireccional

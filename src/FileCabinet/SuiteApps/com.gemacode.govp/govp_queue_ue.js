@@ -7,7 +7,10 @@ define(['N/record', 'N/runtime', 'N/search', './govp_core'], (record, runtime, s
   const afterSubmit = context => {
     if (context.type === context.UserEventType.DELETE) return;
     const source = context.newRecord;
-    const action = source.type === record.Type.ITEM_FULFILLMENT ? 'issue' : 'verify';
+    let action;
+    if (source.type === record.Type.ITEM_FULFILLMENT) action = 'issue';
+    else if (source.type === record.Type.ITEM_RECEIPT) action = 'verify';
+    else return;
     const reference = action === 'verify' ? source.getValue({ fieldId: 'custbody_govp_reference' }) : '';
     if (action === 'verify' && !reference) return;
     const key = core.idempotencyKey({
