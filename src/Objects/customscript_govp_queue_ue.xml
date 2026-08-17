@@ -1,0 +1,8 @@
+<usereventscript scriptid="customscript_govp_queue_ue">
+  <description>Encola emisión o comprobación GOVP sin bloquear la transacción.</description><isinactive>F</isinactive><name>GOVP Queue</name><notifyadmins>F</notifyadmins><notifyemails></notifyemails><notifyowner>T</notifyowner><notifyuser>F</notifyuser>
+  <scriptfile>[/SuiteApps/com.gemacode.govp/govp_queue_ue.js]</scriptfile>
+  <scriptdeployments>
+    <scriptdeployment scriptid="customdeploy_govp_item_fulfillment"><allemployees>F</allemployees><alllocalizationcontexts>T</alllocalizationcontexts><allpartners>F</allpartners><allroles>T</allroles><audslctrole></audslctrole><eventtype></eventtype><executioncontext>CSVIMPORT|RESTWEBSERVICES|USERINTERFACE|WEBSERVICES</executioncontext><isdeployed>T</isdeployed><loglevel>AUDIT</loglevel><recordtype>ITEMFULFILLMENT</recordtype><runasrole></runasrole><status>RELEASED</status></scriptdeployment>
+    <scriptdeployment scriptid="customdeploy_govp_item_receipt"><allemployees>F</allemployees><alllocalizationcontexts>T</alllocalizationcontexts><allpartners>F</allpartners><allroles>T</allroles><audslctrole></audslctrole><eventtype></eventtype><executioncontext>CSVIMPORT|RESTWEBSERVICES|USERINTERFACE|WEBSERVICES</executioncontext><isdeployed>T</isdeployed><loglevel>AUDIT</loglevel><recordtype>ITEMRECEIPT</recordtype><runasrole></runasrole><status>RELEASED</status></scriptdeployment>
+  </scriptdeployments>
+</usereventscript>

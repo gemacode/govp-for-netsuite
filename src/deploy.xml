@@ -1,0 +1,4 @@
+<deploy>
+  <files><path>~/FileCabinet/SuiteApps/com.gemacode.govp/*</path></files>
+  <objects><path>~/Objects/*</path></objects>
+</deploy>

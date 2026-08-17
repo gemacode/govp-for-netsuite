@@ -1,0 +1,12 @@
+<manifest projecttype="SUITEAPP">
+  <publisherid>com.gemacode</publisherid>
+  <projectid>govp</projectid>
+  <projectname>GOVP for NetSuite</projectname>
+  <projectversion>0.1.0</projectversion>
+  <frameworkversion>1.0</frameworkversion>
+  <dependencies>
+    <features>
+      <feature required="true">SERVERSIDESCRIPTING</feature>
+    </features>
+  </dependencies>
+</manifest>
