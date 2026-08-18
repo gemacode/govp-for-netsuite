@@ -108,6 +108,7 @@ const mapReduceHarness = async ({ action, response, reference = '', attempts = 0
     save: () => { saves.push({ ...values }); return '1'; },
   };
   const transaction = {
+    getValue: ({ fieldId }) => fieldId === 'trandate' ? new Date('2026-08-17T00:00:00.000Z') : '',
     getLineCount: () => 1,
     getSublistText: ({ fieldId }) => ({ item: 'Widget', units: 'Unit', location: 'Madrid' })[fieldId] || '',
     getSublistValue: ({ fieldId }) => fieldId === 'quantity' ? 2 : '100',
@@ -155,6 +156,15 @@ test('Map/Reduce emite con API Secret, idempotencia y huella canónica', async (
   assert.equal(result.requests[0].headers.Authorization, 'Bearer {custsecret_govp_connector_token}');
   assert.equal(result.requests[0].headers['Idempotency-Key'], result.values.externalid);
   assert.match(result.requests[0].body, /"sha256":"[a-f0-9]{64}"/);
+  assert.equal(JSON.parse(result.requests[0].body).validUntil, '2027-08-17T00:00:00.000Z');
+});
+
+test('la vigencia depende de la fecha de transacción y no del momento del reintento', () => {
+  const anchor = new Date('2026-08-17T00:00:00.000Z');
+  assert.equal(core.validUntil(anchor, 30), '2026-09-16T00:00:00.000Z');
+  assert.equal(core.validUntil(new Date(anchor), 30), core.validUntil(anchor, 30));
+  assert.throws(() => core.validUntil('', 30), /fecha estable/);
+  assert.throws(() => core.validUntil(anchor, 0), /entero positivo/);
 });
 
 test('Map/Reduce verifica y convierte un 503 en reintento acotado', async () => {

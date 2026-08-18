@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.3 - 2026-08-18
+
+- La caducidad se deriva de `trandate`, por lo que los reintentos idempotentes
+  conservan el mismo cuerpo de emisión.
+- Se rechazan fechas de transacción ausentes y periodos de validez no positivos.
+- La suite comprueba explícitamente la vigencia estable en emisión y reintento.
+
 ## 0.1.2 - 2026-08-17
 
 - La cola interna queda accesible a los scripts ejecutados por roles internos,

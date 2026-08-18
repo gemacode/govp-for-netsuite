@@ -75,7 +75,7 @@ define(['N/crypto', 'N/encode', 'N/https', 'N/record', 'N/runtime', 'N/search', 
         if (action === 'issue') {
           const canonical = JSON.stringify(lines(transaction));
           const key = job.getValue({ fieldId: 'externalid' });
-          const validUntil = new Date(Date.now() + config.validity * 86400000).toISOString();
+          const validUntil = core.validUntil(transaction.getValue({ fieldId: 'trandate' }), config.validity);
           result = request(config, '/connectors/issue', https.Method.POST, {
             issuer: { name: `NetSuite ${runtime.accountId}` },
             subject: { type: 'shipment', id: String(sourceId), name: `Item Fulfillment ${sourceId}` },

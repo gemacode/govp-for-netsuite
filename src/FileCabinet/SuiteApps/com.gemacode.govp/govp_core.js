@@ -21,11 +21,18 @@ define([], () => {
     return ['netsuite', clean(accountId), clean(subsidiary || 'root'), clean(recordType), clean(recordId), clean(action)].join(':').slice(0, 160);
   };
   const retryDelaySeconds = attempt => Math.min(21600, 30 * (2 ** Math.max(0, Number(attempt || 1) - 1)));
+  const validUntil = (anchor, validityDays) => {
+    const days = Number(validityDays);
+    if (!Number.isInteger(days) || days < 1) throw new Error('La validez GOVP debe ser un entero positivo');
+    const parsed = anchor instanceof Date ? anchor.getTime() : Date.parse(String(anchor || ''));
+    if (!Number.isFinite(parsed)) throw new Error('La transacción necesita una fecha estable para emitir GOVP');
+    return new Date(parsed + days * 86400000).toISOString();
+  };
   const assertExchangeUrl = value => {
     if (!/^https:\/\/partners\.gemacode\.org\/api\/exchange\/?$/.test(text(value))) {
       throw new Error('La versión candidata solo admite el Exchange oficial por HTTPS');
     }
     return text(value).replace(/\/$/, '');
   };
-  return { canonicalLines, idempotencyKey, retryDelaySeconds, assertExchangeUrl };
+  return { canonicalLines, idempotencyKey, retryDelaySeconds, validUntil, assertExchangeUrl };
 });
